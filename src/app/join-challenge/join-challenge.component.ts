@@ -11,7 +11,7 @@ import {NgIf} from '@angular/common';
   styleUrl: './join-challenge.component.scss'
 })
 export class JoinChallengeComponent {
-  public showModal = true;
+  public showModal = false;
   public joinFlowStep = JoinFlowStep.ParticipateForPricesQuestion;
   public JoinFlowSteps = JoinFlowStep;
 
