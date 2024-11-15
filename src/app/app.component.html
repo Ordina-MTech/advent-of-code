@@ -1,0 +1,31 @@
+<div id="header" class="min-h-96">
+  <div class="flex justify-center">
+    <div class="mt-32 flex flex-col items-center">
+      <span class="text-6xl font-bold text-white">Advent Of Code</span>
+      <span class="text-xl bg-white px-6 py-3 skew-x-12 inline-block mt-4"><span class="-skew-x-12 inline-block">ToTheRoot Edition</span></span>
+    </div>
+  </div>
+</div>
+
+<div class="-mt-10 flex justify-center mb-20">
+  <div class="max-w-screen-lg bg-white p-6 rounded shadow-2xl w-full">
+    <span class="text-2xl">Leaderboard</span>
+
+    <app-ranking-chart></app-ranking-chart>
+
+    <hr class="border mt-8 w-full"/>
+
+    <h2 class="text-2xl mt-8">About the challenge</h2>
+    <p class="mt-2">
+      Advent of Code is an Advent calendar of <span class="font-bold">small programming puzzles</span> for a variety of skill sets and skill levels that can be solved in <span class="font-bold">any programming</span> language you like.
+      <br /><br />
+      Each year we organize a leaderboard to track the progress between colleagues. The top 5 will receive <span class="font-bold">a price</span> from the <a class="underline text-blue-500" href="https://advent-of-code.creator-spring.com/" rel="nofollow noopener">AoC Webshop</a>.
+    </p>
+
+    <hr class="border w-full mt-8"/>
+
+    <app-join-challenge></app-join-challenge>
+  </div>
+</div>
+
+<router-outlet/>

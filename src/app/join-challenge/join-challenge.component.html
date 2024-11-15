@@ -1,0 +1,47 @@
+<h2 class="text-2xl mt-8">Join</h2>
+
+<p class="mt-2">Ready to join the challenge and battle the other contestants with your coding skills?</p>
+
+<button class="fancy-button" (click)="showModal = true">Let's go!</button>
+
+
+<div class="fixed left-0 top-0 h-full w-full flex justify-center items-center" *ngIf="showModal">
+  <div class="bg-black opacity-20 w-full h-full" (click)="closeModal()"></div>
+
+  <div class="absolute w-2/5 bg-white p-4">
+    <div class="p-4">
+      <h1 class="text-black text-2xl">Join the challenge</h1>
+
+      <div class="mt-4">
+        <div *ngIf="joinFlowStep == JoinFlowSteps.ParticipateForPricesQuestion">
+          <p>Do you want to participate to win prices?</p>
+
+          <div class="mt-4">
+            <button class="fancy-button" (click)="joinFlowStep = JoinFlowSteps.ParticipateEmailQuestion">Yes</button>
+            <button class="btn" (click)="joinFlowStep = JoinFlowSteps.ParticipateJoinCode">No</button>
+          </div>
+        </div>
+
+        <div *ngIf="joinFlowStep == JoinFlowSteps.ParticipateEmailQuestion">
+          <p>Please enter your e-mail, this will only be used to contact you about prices</p>
+          <input type="email" class="mt-4 w-full px-4 py-2 border border-gray-200 rounded" placeholder="Email"/>
+
+          <button class="fancy-button" (click)="joinFlowStep = JoinFlowSteps.ParticipateJoinCode">Confirm</button>
+        </div>
+
+        <div *ngIf="joinFlowStep == JoinFlowSteps.ParticipateJoinCode">
+          <p>You can join by following these steps:</p>
+
+          <ul class="list-decimal list-inside mt-4 pl-4">
+            <li>Open <a class="underline text-blue-500" target="_blank" href="https://adventofcode.com/2024/leaderboard/private">https://adventofcode.com/2024/leaderboard/private</a> (opens in new tab)</li>
+            <li class="mt-2">Enter <span class="bg-gray-100 p-1 rounded">333-444</span> as join code</li>
+          </ul>
+
+          <button class="fancy-button" (click)="closeModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <p></p>
+  </div>
+</div>
