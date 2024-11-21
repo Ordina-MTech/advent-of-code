@@ -18,4 +18,8 @@
 .fancy-button {
   @apply px-4 py-2 text-white mt-4 font-bold;
   background-image: linear-gradient(40deg,#4c1f82,#8c1d82 14%,#cf022b 50%,#ffb15c);
+
+  &:disabled {
+    @apply opacity-20;
+  }
 }

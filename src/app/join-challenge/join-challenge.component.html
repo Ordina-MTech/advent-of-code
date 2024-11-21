@@ -23,10 +23,16 @@
         </div>
 
         <div *ngIf="joinFlowStep == JoinFlowSteps.ParticipateEmailQuestion">
-          <p>Please enter your e-mail, this will only be used to contact you about prices</p>
-          <input type="email" class="mt-4 w-full px-4 py-2 border border-gray-200 rounded" placeholder="Email"/>
+          <p>Please enter your AoC username and e-mail. This will only be used to contact you if you are eligible for choosing a price.</p>
 
-          <button class="fancy-button" (click)="joinFlowStep = JoinFlowSteps.ParticipateJoinCode">Confirm</button>
+          <p class="mt-2 text-red-400" *ngIf="errorMessage">{{errorMessage}}</p>
+
+          <form [formGroup]="registerForm">
+            <input type="text" class="mt-4 w-full px-4 py-2 border border-gray-200 rounded" placeholder="Advent Of Code username" formControlName="username"/>
+            <input type="email" class="mt-2 w-full px-4 py-2 border border-gray-200 rounded" placeholder="Email" formControlName="email"/>
+          </form>
+
+          <button class="fancy-button" [disabled]="registerForm.invalid" (click)="registerContestant()">Confirm</button>
         </div>
 
         <div *ngIf="joinFlowStep == JoinFlowSteps.ParticipateJoinCode">
