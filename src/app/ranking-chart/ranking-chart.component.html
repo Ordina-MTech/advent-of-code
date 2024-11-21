@@ -1,11 +1,11 @@
 <div class="relative">
   <ng-container *ngIf="!hasStarted">
-    <div class="w-full h-full absolute backdrop-blur-sm backdrop-brightness-100"></div>
+    <div class="w-full h-full absolute backdrop-brightness-100" [style.backdrop-filter]="'blur(7px)'"></div>
     <div class="w-full h-full absolute flex justify-center items-center">
       <div class="text-center">
-        <h1 class="text-5xl leading-loose font-bold text-black gradient-text">Challenge starts in:</h1>
+        <h1 class="text-5xl font-bold text-black gradient-text" [style.line-height]="'1.1em'">Challenge starts in:</h1>
 
-        <p class="text-3xl text-black gradient-text">{{ formattedCountdown }}</p>
+        <p class="mt-2 text-3xl text-black gradient-text">{{ formattedCountdown }}</p>
       </div>
     </div>
   </ng-container>
@@ -23,6 +23,6 @@
       </div>
     </div>
 
-    <button class="text-black mt-4 px-4 py-2 border-2 rounded-full text-sm">View all</button>
+    <button class="text-black mt-4 px-4 py-2 border-2 rounded-full text-sm" *ngIf="hasStarted">View all</button>
   </div>
 </div>
