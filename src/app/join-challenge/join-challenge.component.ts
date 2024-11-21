@@ -39,7 +39,7 @@ export class JoinChallengeComponent {
         next: _ => {
           this.isLoading = false;
           this.errorMessage = '';
-          this.joinFlowStep = JoinFlowStep.Rules;
+          this.joinFlowStep = JoinFlowStep.ParticipateJoinCode;
         },
         error: _ => {
           this.errorMessage = 'Something went wrong. Please try again later';
