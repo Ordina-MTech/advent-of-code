@@ -43,8 +43,8 @@
 
           <form [formGroup]="registerForm">
             <div class="mt-4 ">
-              <p class="font-bold text-sm">AoC Username</p>
-              <input type="text" class="mt-1 w-full px-4 py-2 border border-gray-200 rounded" placeholder="Advent Of Code username" formControlName="username"/>
+              <p class="font-bold text-sm">AoC Username <span>(can be found <a class="underline text-blue-500" href="https://adventofcode.com/2024/settings" rel="noopener nofollow" target="_blank">here</a>)</span></p>
+              <input type="text" class="mt-1 w-full px-4 py-2 border border-gray-200 rounded" placeholder="AoC Username" formControlName="username"/>
             </div>
 
             <div class="mt-2">
@@ -60,8 +60,8 @@
           <p>You can join by following these steps:</p>
 
           <ul class="list-decimal list-inside mt-4 pl-4">
-            <li>Login on AoC <a class="underline text-blue-500" target="_blank" href="https://adventofcode.com/2024/auth/login">https://adventofcode.com/2024/auth/login</a> (opens in new tab)</li>
-            <li class="mt-2">Open <a class="underline text-blue-500" target="_blank" href="https://adventofcode.com/2024/leaderboard/private">https://adventofcode.com/2024/leaderboard/private</a> (opens in new tab)</li>
+            <li>Login on AoC <a class="underline text-blue-500" target="_blank" href="https://adventofcode.com/2024/auth/login" rel="noopener nofollow">https://adventofcode.com/2024/auth/login</a> (opens in new tab)</li>
+            <li class="mt-2">Open <a class="underline text-blue-500" target="_blank" href="https://adventofcode.com/2024/leaderboard/private" rel="noopener nofollow">https://adventofcode.com/2024/leaderboard/private</a> (opens in new tab)</li>
             <li class="mt-2">Enter <input type="text" class="bg-gray-100 px-2 py-1 rounded" [style.width]="'160px'" disabled value="2299315-d1ab6b3e"/> as join code</li>
           </ul>
 
