@@ -32,6 +32,8 @@ export class JoinChallengeComponent {
   }
 
   registerContestant(){
+    this.isLoading = true;
+
     this.contestantService.register(this.registerForm.getRawValue())
       .subscribe({
         next: _ => {
