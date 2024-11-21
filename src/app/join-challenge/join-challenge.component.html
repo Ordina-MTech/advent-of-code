@@ -53,7 +53,7 @@
             </div>
           </form>
 
-          <button class="fancy-button" [disabled]="registerForm.invalid" (click)="registerContestant()">Confirm</button>
+          <button class="fancy-button" [disabled]="registerForm.invalid || isLoading" (click)="registerContestant()">Confirm</button>
         </div>
 
         <div *ngIf="joinFlowStep == JoinFlowSteps.ParticipateJoinCode">
