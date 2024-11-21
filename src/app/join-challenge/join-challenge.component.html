@@ -13,12 +13,26 @@
       <h1 class="text-black text-2xl">Join the challenge</h1>
 
       <div class="mt-4">
+        <div *ngIf="joinFlowStep == JoinFlowSteps.Rules">
+          <p>When participating the following rules must be followed. Breaking these rules excludes you from winning prices.</p>
+
+          <ul class="list-decimal list-inside mt-4 pl-4">
+            <li>Do not use answers/solutions from the internet</li>
+            <li class="mt-2">Do not use AI generated solutions</li>
+            <li class="mt-2">Do not cheat in any other way</li>
+          </ul>
+
+          <p class="mt-4"><input type="checkbox" [(ngModel)]="agreeToRules"><span class="ml-2" (click)="agreeToRules = !agreeToRules">I will follow these rules</span></p>
+
+          <button class="fancy-button" [disabled]="!agreeToRules" (click)="joinFlowStep = JoinFlowSteps.ParticipateForPricesQuestion">Confirm</button>
+        </div>
+
         <div *ngIf="joinFlowStep == JoinFlowSteps.ParticipateForPricesQuestion">
-          <p>Do you want to participate to win prices?</p>
+          <p>Do you want to receive a price if you finish in the top 5?</p>
 
           <div class="mt-4">
             <button class="fancy-button" (click)="joinFlowStep = JoinFlowSteps.ParticipateEmailQuestion">Yes</button>
-            <button class="btn" (click)="joinFlowStep = JoinFlowSteps.ParticipateJoinCode">No</button>
+            <button class="btn" (click)="joinFlowStep = JoinFlowSteps.Rules">No</button>
           </div>
         </div>
 
@@ -28,8 +42,15 @@
           <p class="mt-2 text-red-400" *ngIf="errorMessage">{{errorMessage}}</p>
 
           <form [formGroup]="registerForm">
-            <input type="text" class="mt-4 w-full px-4 py-2 border border-gray-200 rounded" placeholder="Advent Of Code username" formControlName="username"/>
-            <input type="email" class="mt-2 w-full px-4 py-2 border border-gray-200 rounded" placeholder="Email" formControlName="email"/>
+            <div class="mt-4 ">
+              <p class="font-bold text-sm">AoC Username</p>
+              <input type="text" class="mt-1 w-full px-4 py-2 border border-gray-200 rounded" placeholder="Advent Of Code username" formControlName="username"/>
+            </div>
+
+            <div class="mt-2">
+              <p class="font-bold text-sm">Email</p>
+              <input type="email" class="mt-1 w-full px-4 py-2 border border-gray-200 rounded" placeholder="Email" formControlName="email"/>
+            </div>
           </form>
 
           <button class="fancy-button" [disabled]="registerForm.invalid" (click)="registerContestant()">Confirm</button>
@@ -40,7 +61,7 @@
 
           <ul class="list-decimal list-inside mt-4 pl-4">
             <li>Open <a class="underline text-blue-500" target="_blank" href="https://adventofcode.com/2024/leaderboard/private">https://adventofcode.com/2024/leaderboard/private</a> (opens in new tab)</li>
-            <li class="mt-2">Enter <span class="bg-gray-100 p-1 rounded">333-444</span> as join code</li>
+            <li class="mt-2">Enter <span class="bg-gray-100 p-1 rounded">2299315-d1ab6b3e</span> as join code</li>
           </ul>
 
           <button class="fancy-button" (click)="closeModal()">Close</button>
