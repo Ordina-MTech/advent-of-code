@@ -9,23 +9,6 @@
 
 <div class="-mt-10 flex justify-center mb-20 mx-4 lg:mx-0">
   <div class="max-w-screen-lg bg-white p-6 rounded shadow-2xl w-full">
-    <span class="text-2xl">Leaderboard</span>
-
-    <app-ranking-chart></app-ranking-chart>
-
-    <hr class="border mt-8 w-full"/>
-
-    <h2 class="text-2xl mt-8">About the challenge</h2>
-    <p class="mt-2">
-      <a class="underline hover:text-blue-500" target="_blank" href="https://adventofcode.com/" rel="nofollow noopener">Advent of Code</a> is an Advent calendar of <span class="font-bold">small programming puzzles</span> for a variety of skill sets and skill levels that can be solved in any programming language you like.
-      <br /><br />
-      Each year we organize a leaderboard to compete with peers. The top 5 will receive <span class="font-bold">a price</span> from the <a class="underline hover:text-blue-500" target="_blank" href="https://advent-of-code.creator-spring.com/" rel="nofollow noopener">AoC Webshop</a>.
-    </p>
-
-    <hr class="border w-full mt-8"/>
-
-    <app-join-challenge></app-join-challenge>
+    <router-outlet/>
   </div>
 </div>
-
-<router-outlet/>

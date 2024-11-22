@@ -1,5 +1,7 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, Input, OnDestroy} from '@angular/core';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
+import {StatisticsService} from '../services/statistics-service';
+import {RankedUser} from '../services/models/statistics';
 
 @Component({
   selector: 'app-ranking-chart',
@@ -13,22 +15,21 @@ import {NgClass, NgForOf, NgIf} from '@angular/common';
   styleUrl: './ranking-chart.component.scss'
 })
 export class RankingChartComponent implements OnDestroy {
-  rankedUsers = [
-    {progress: 70, points: 70, name: 'Maarten'},
-    {progress: 65, points: 65, name: 'Jan'},
-    {progress: 50, points: 50, name: 'Tom'},
-    {progress: 45, points: 45, name: 'Gerbert'},
-    {progress: 43, points: 43, name: 'Johan'},
-  ];
+  rankedUsers: RankedUser[] = [];
+
+  @Input()
+  public showOnlySummary = true;
 
   public hasStarted = false;
   public intervalRef: any = null;
 
   public formattedCountdown = '';
 
-  constructor() {
+  constructor(private statisticsService: StatisticsService) {
     this.formattedCountdown = this.getFormattedTimeLeftTillStart();
+
     this.setupCountdown();
+    this.loadRankedUsers();
   }
 
 
@@ -66,4 +67,21 @@ export class RankingChartComponent implements OnDestroy {
     clearTimeout(this.intervalRef);
   }
 
+  private loadRankedUsers() {
+    if(!this.hasStarted){
+      this.rankedUsers = [
+        {progress: 70, points: 70, name: 'Maarten'},
+        {progress: 65, points: 65, name: 'Jan'},
+        {progress: 50, points: 50, name: 'Tom'},
+        {progress: 45, points: 45, name: 'Gerbert'},
+        {progress: 43, points: 43, name: 'Johan'},
+      ];
+
+      return;
+    }
+
+    this.statisticsService.getStatistics().subscribe((statistics) => {
+      this.rankedUsers = this.showOnlySummary ? statistics.rankedUsers.slice(0, 5) : statistics.rankedUsers;
+    })
+  }
 }
