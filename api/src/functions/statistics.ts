@@ -1,6 +1,6 @@
 import {app, HttpRequest, HttpResponseInit, InvocationContext} from "@azure/functions";
-import {AocLeaderboard} from '../models/aoc-leaderboard';
-
+import {RankingService} from '../services/ranking-service';
+import {AocLeaderboard} from '../models/aoc';
 
 export async function statistics(request: HttpRequest, context: InvocationContext): Promise<HttpResponseInit> {
   context.log(`Http function processed request for url "${request.url}"`);
@@ -14,11 +14,13 @@ export async function statistics(request: HttpRequest, context: InvocationContex
   });
   const leaderboard = await response.json() as AocLeaderboard;
 
-  const rankedUsers = Object.values(leaderboard.members).map(member => ({
-    progress: member.local_score, points: member.local_score, name: member.name
+  const rankedUsers = RankingService.getAsRankedUsers(Object.values(leaderboard.members))
+
+  const rankedUsersStatistics = rankedUsers.map(member => ({
+    progress: (member.peer_score / 50) * 100, points: member.peer_score, name: member.name
   }));
 
-  return {jsonBody: {rankedUsers: rankedUsers}};
+  return {jsonBody: {rankedUsers: rankedUsersStatistics}};
 }
 
 app.http('statistics', {
