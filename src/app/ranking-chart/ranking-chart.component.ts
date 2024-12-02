@@ -20,7 +20,7 @@ export class RankingChartComponent implements OnDestroy {
   @Input()
   public showOnlySummary = true;
 
-  public hasStarted = false;
+  public hasStarted = true;
   public intervalRef: any = null;
 
   public formattedCountdown = '';
