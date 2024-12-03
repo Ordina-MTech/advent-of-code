@@ -17,8 +17,17 @@ import {RankedUser} from '../services/models/statistics';
 export class RankingChartComponent implements OnDestroy {
   rankedUsers: RankedUser[] = [];
 
+  private _showOnlySummary = true;
+
   @Input()
-  public showOnlySummary = true;
+  public set showOnlySummary(showOnlySummary: boolean) {
+    this._showOnlySummary = showOnlySummary;
+    this.loadRankedUsers();
+  };
+
+  public get showOnlySummary(): boolean {
+    return this._showOnlySummary;
+  }
 
   public hasStarted = true;
   public intervalRef: any = null;
@@ -80,8 +89,15 @@ export class RankingChartComponent implements OnDestroy {
       return;
     }
 
+    if(localStorage.getItem('stats_cache')){
+      const statistics = JSON.parse(localStorage.getItem('stats_cache')!);
+
+      this.rankedUsers = this.showOnlySummary ? statistics.rankedUsers.slice(0, 5) : statistics.rankedUsers;
+    }
+
     this.statisticsService.getStatistics().subscribe((statistics) => {
       this.rankedUsers = this.showOnlySummary ? statistics.rankedUsers.slice(0, 5) : statistics.rankedUsers;
+      localStorage.setItem('stats_cache', JSON.stringify(statistics));
     })
   }
 }
