@@ -19,7 +19,7 @@ export async function statistics(request: HttpRequest, context: InvocationContex
   const maxPeerScore = Math.max(...rankedUsers.map(m => m.peer_score));
 
   const rankedUsersStatistics = rankedUsers.map(member => ({
-    progress: member.peer_score/maxPeerScore*100, points: member.peer_score, name: member.name
+    progress: member.peer_score/maxPeerScore*100, points: member.peer_score, name: member.name, stars: member.stars, local_score: member.local_score
   }));
 
   return {jsonBody: {rankedUsers: rankedUsersStatistics}};
