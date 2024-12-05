@@ -16,10 +16,10 @@ export async function statistics(request: HttpRequest, context: InvocationContex
 
   const rankedUsers = RankingService.getAsRankedUsers(Object.values(leaderboard.members))
 
-  const maxPeerScore = Math.max(...rankedUsers.map(m => m.peer_score));
+  const maxStars = Math.max(...rankedUsers.map(m => m.stars));
 
   const rankedUsersStatistics = rankedUsers.map(member => ({
-    progress: member.peer_score/maxPeerScore*100, points: member.peer_score, name: member.name, stars: member.stars, local_score: member.local_score
+    progress: member.stars/maxStars*100, points: member.peer_score, name: member.name, stars: member.stars, localScore: member.local_score
   }));
 
   return {jsonBody: {rankedUsers: rankedUsersStatistics}};

@@ -4,5 +4,7 @@ export interface Statistics {
 export interface RankedUser {
   progress: number;
   points: number;
+  stars: number;
+  localScore: number;
   name: string;
 }

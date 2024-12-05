@@ -79,11 +79,11 @@ export class RankingChartComponent implements OnDestroy {
   private loadRankedUsers() {
     if(!this.hasStarted){
       this.rankedUsers = [
-        {progress: 70, points: 70, name: 'Maarten'},
-        {progress: 65, points: 65, name: 'Jan'},
-        {progress: 50, points: 50, name: 'Tom'},
-        {progress: 45, points: 45, name: 'Gerbert'},
-        {progress: 43, points: 43, name: 'Johan'},
+        {progress: 70, points: 70, name: 'Maarten', stars: 0, localScore: 0},
+        {progress: 65, points: 65, name: 'Jan', stars: 0, localScore: 0},
+        {progress: 50, points: 50, name: 'Tom', stars: 0, localScore: 0},
+        {progress: 45, points: 45, name: 'Gerbert', stars: 0, localScore: 0},
+        {progress: 43, points: 43, name: 'Johan', stars: 0,localScore: 0},
       ];
 
       return;

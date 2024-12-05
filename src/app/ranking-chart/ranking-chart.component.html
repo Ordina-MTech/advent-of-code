@@ -15,12 +15,12 @@
          *ngFor="let rankedUser of rankedUsers">
 
       <div
-        [style.min-width]="'300px'"
+        [style.min-width]="'370px'"
         [style.width]="rankedUser.progress +'%'"
         class="bg-emerald-400 p-1 px-4 text-white font-bold"
       >
         <div class="flex justify-between"><span>{{ rankedUser.name }}</span><span
-          class="text-white">{{ rankedUser.points }} points</span></div>
+          class="text-white">{{rankedUser.stars}} stars,  {{ rankedUser.points }} points</span></div>
       </div>
     </div>
 
